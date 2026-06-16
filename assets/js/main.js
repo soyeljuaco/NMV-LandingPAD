@@ -26,7 +26,9 @@ function initTabs() {
 
 /* ─── PAD rows — expand / collapse ─────────────────────────── */
 function initPadRows() {
-  document.querySelectorAll('.pad-row[role="button"]').forEach(row => {
+  const BTN_SEL = '.pad-row[role="button"], .prestador-row[role="button"]';
+
+  document.querySelectorAll(BTN_SEL).forEach(row => {
     row.addEventListener('click', () => {
       const wrapper = row.closest('.pad-row-wrapper');
       const panel   = wrapper.querySelector('.pad-row-panel');
@@ -35,12 +37,14 @@ function initPadRows() {
       // Cierra todos los abiertos
       document.querySelectorAll('.pad-row-wrapper.is-open').forEach(w => {
         w.classList.remove('is-open');
-        w.querySelector('.pad-row-panel').hidden = true;
-        w.querySelector('.pad-row[role="button"]').setAttribute('aria-expanded', 'false');
+        const p = w.querySelector('.pad-row-panel');
+        if (p) p.hidden = true;
+        const b = w.querySelector(BTN_SEL);
+        if (b) b.setAttribute('aria-expanded', 'false');
       });
 
       // Abre el clickeado (si estaba cerrado)
-      if (!isOpen) {
+      if (!isOpen && panel) {
         wrapper.classList.add('is-open');
         panel.hidden = false;
         row.setAttribute('aria-expanded', 'true');

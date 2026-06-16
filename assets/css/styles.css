@@ -662,12 +662,12 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 
 .pad-row-wrapper.is-open .pad-row { background: var(--superficies-white); }
 
-.pad-row-content {
+.pad-row-info {
   flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 2px;
 }
 
 .pad-row-name {
@@ -678,12 +678,21 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   color: var(--texto-textprimary);
 }
 
-.pad-row-tags {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  padding-top: 4px;
-  flex-wrap: wrap;
+.pad-row-code {
+  font-family: var(--font-inter);
+  font-size: 14px;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.pad-row-code-label {
+  font-weight: 400;
+  color: var(--texto-textbody);
+}
+
+.pad-row-code-num {
+  font-weight: 700;
+  color: var(--texto-textprimary);
 }
 
 /* ── Chevron toggle ── */
@@ -831,6 +840,24 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   white-space: nowrap;
 }
 
+.tag-tipo {
+  border-radius: var(--radius-sm);
+  padding: 2px 10px;
+  font-family: var(--font-inter);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+  white-space: nowrap;
+}
+.tag-tipo--ambulatorio {
+  background: rgba(0,158,142,0.1);
+  color: #007d70;
+}
+.tag-tipo--hospitalario {
+  background: rgba(126,78,215,0.1);
+  color: #7e4ed7;
+}
+
 .pad-row-providers {
   display: flex;
   align-items: center;
@@ -893,14 +920,20 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 
 .prestador-meta {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
 }
 
 .prestador-meta-item {
   display: flex;
   align-items: center;
   gap: 6px;
+}
+
+.prestador-meta-item + .prestador-meta-item {
+  border-left: 1px solid var(--bordes-borderdefault);
+  padding-left: 16px;
 }
 
 .prestador-meta-icon {
@@ -939,28 +972,69 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 
 .prestador-pad-count-wrap {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
   flex-shrink: 0;
-  min-width: 56px;
-  gap: 2px;
+  gap: 4px;
+  white-space: nowrap;
 }
 
 .prestador-pad-count-num {
   font-family: var(--font-inter);
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 1;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
   color: var(--texto-textprimary);
 }
 
 .prestador-pad-count-label {
   font-family: var(--font-inter);
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
   color: var(--texto-textbody);
+}
+
+/* Prestador row — clickeable + hover */
+.prestador-row[role="button"] {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.prestador-row[role="button"]:hover { background: #f8fafc; }
+.pad-row-wrapper.is-open .prestador-row { background: var(--superficies-white); }
+
+/* Lista de PADs dentro del panel de un prestador */
+.prestador-pads-list {
+  display: flex;
+  flex-direction: column;
+}
+.prestador-pad-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--bordes-borderdefault);
+}
+.prestador-pad-item:last-child { border-bottom: none; }
+.prestador-pad-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.prestador-pad-item-name {
+  font-family: var(--font-inter);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--texto-textprimary);
+}
+.prestador-pad-item-specialty {
+  font-family: var(--font-inter);
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--texto-textsubtle);
+  white-space: nowrap;
 }
 
 
@@ -1048,7 +1122,6 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .conditions-right {
   width: 646px;
   flex-shrink: 0;
-  background: var(--superficies-bgpage);
   border: 1px solid var(--bordes-borderdefault);
   border-radius: var(--radius-lg);
   overflow: hidden;
