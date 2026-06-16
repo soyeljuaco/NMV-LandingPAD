@@ -1,0 +1,57 @@
+/* ============================================================
+   NUEVA MASVIDA — Design System Tokens 2026
+   Source: Figma DS Nueva Masvida 2026
+   ============================================================ */
+
+:root {
+  /* ── Marca Principal ── */
+  --marca-principal-primary:        #0085ca;
+  --marca-principal-primaryiconbg:  rgba(0, 133, 202, 0.12);
+
+  /* ── Acento ── */
+  --acento-orange: #ef9033;
+
+  /* ── Texto ── */
+  --texto-textprimary: #212529;
+  --texto-textbody:    #495057;
+  --texto-textsubtle:  #6c757d;
+  --texto-textinverse: #ffffff;
+
+  /* ── Bordes ── */
+  --bordes-borderdefault: #dee2e6;
+  --bordes-borderinput:   #dee2e6;
+
+  /* ── Superficies ── */
+  --superficies-white:  #ffffff;
+  --superficies-bgpage: #f5f7fa;
+
+  /* ── Estado ── */
+  --estado-green:     #25a337;
+  --estado-greensoft: rgba(53, 173, 68, 0.15);
+
+  /* ── Dark accent ── */
+  --dark-navy:  #0d1e33;
+  --dark-blue:  #003f7f;
+
+  /* ── Radii ── */
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-pill: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-card: 0px 4px 6px rgba(0, 0, 0, 0.08);
+  --shadow-tab:  0px 1px 1.5px rgba(0,0,0,0.1), 0px 1px 1px rgba(0,0,0,0.1);
+
+  /* ── Typography ── */
+  --font-raleway:   'Raleway', sans-serif;
+  --font-inter:     'Inter', sans-serif;
+  --font-bricolage: 'Bricolage Grotesque', sans-serif;
+  --font-dm-sans:   'DM Sans', sans-serif;
+
+  /* ── Spacing ── */
+  --container-max:   1200px;
+  --section-py-xl:   120px;
+  --section-py-lg:   80px;
+  --section-py-md:   48px;
+}
