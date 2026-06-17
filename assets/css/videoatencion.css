@@ -20,14 +20,13 @@
   justify-content: center;
 }
 
-/* Full-bleed background photo */
+/* Full-bleed background photo — height auto para no cortar el rostro */
 .va-hero-bg-img {
   position: absolute;
-  top: -0.01%;
+  top: 0;
   left: 33.32%;
   width: 69.81%;
-  height: 118.39%;
-  object-fit: cover;
+  height: auto;
   pointer-events: none;
   z-index: 0;
   max-width: none;
@@ -103,6 +102,71 @@
   line-height: 34px;
   color: var(--texto-textbody);
   margin: 0;
+}
+
+/* ── Feature animated rows ── */
+.va-feature-row {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.va-progress-track {
+  width: 3px;
+  flex-shrink: 0;
+  align-self: stretch;
+  position: relative;
+  border-radius: 9999px;
+  overflow: hidden;
+  background: transparent;
+}
+
+.va-progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  border-radius: 9999px;
+}
+
+.va-progress-bar.va-bar-running {
+  animation: va-progress-grow 2.5s linear forwards;
+}
+
+@keyframes va-progress-grow {
+  from { height: 0%; }
+  to   { height: 100%; }
+}
+
+.va-feature-item {
+  flex: 1;
+  transition: opacity 400ms cubic-bezier(0.4,0,0.2,1),
+              transform 400ms cubic-bezier(0.4,0,0.2,1);
+  cursor: default;
+}
+
+.va-feature-item.is-dim .va-feature-icon-wrap { opacity: 0.88; }
+.va-feature-item.is-dim .va-feature-title,
+.va-feature-item.is-dim .va-feature-body      { opacity: 0.55; }
+
+.va-feature-item.is-active                    { opacity: 1; transform: translateX(4px); }
+
+.va-feature-title { transition: opacity 400ms ease; }
+.va-feature-body  { transition: opacity 400ms ease; }
+
+.va-feature-icon-wrap {
+  transition: transform 400ms cubic-bezier(0.4,0,0.2,1),
+              background 400ms ease;
+}
+.va-feature-item.is-active .va-feature-icon-wrap { transform: scale(1.08); }
+
+@media (prefers-reduced-motion: reduce) {
+  .va-feature-item.is-dim  { opacity: 1 !important; }
+  .va-feature-item.is-active { transform: none !important; }
+  .va-feature-item.is-dim .va-feature-title,
+  .va-feature-item.is-dim .va-feature-body { opacity: 1 !important; }
+  .va-progress-bar { animation: none !important; height: 100% !important; }
 }
 
 /* ── Primary CTA button (blue) ── */
@@ -335,19 +399,32 @@
   font-weight: 700;
 }
 
-/* Photo card */
+/* Photo card con zoom-in hover */
 .va-photo-card {
   position: relative;
   width: 100%;
   height: 448px;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background-image: url('../img/video-reserva-bg.jpg');
-  background-size: cover;
-  background-position: center;
 }
 
-.va-photo-card-overlay {
+/* Imagen de fondo — animable con transform */
+.va-bg-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1);
+  transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+.va-bg-zoom-wrap:hover .va-bg-photo { transform: scale(1.06); }
+
+/* Degradado permanente (izquierda oscura) */
+.va-photo-card-gradient {
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -355,8 +432,21 @@
     rgba(33, 37, 41, 0.3) 11.25%,
     rgba(255, 255, 255, 0) 84.53%
   );
-  border-radius: var(--radius-lg);
+  z-index: 1;
+  pointer-events: none;
 }
+
+/* Overlay oscuro adicional en hover */
+.va-bg-zoom-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: background 600ms ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.va-bg-zoom-wrap:hover .va-bg-zoom-overlay { background: rgba(0, 0, 0, 0.18); }
 
 .va-elem-d2 {
   position: absolute;
@@ -366,6 +456,7 @@
   height: 77px;
   object-fit: cover;
   pointer-events: none;
+  z-index: 3;
 }
 
 /* Step cards row */

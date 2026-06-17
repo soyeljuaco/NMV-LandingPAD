@@ -194,46 +194,58 @@
           </h2>
         </div>
 
-        <!-- Right: 4 feature items -->
-        <div class="va-benefits-right" role="list" aria-label="Beneficios de la videoatención">
+        <!-- Right: 4 feature items con barra de progreso animada -->
+        <div class="va-benefits-right" id="va-features-list" aria-live="polite">
 
-          <div class="va-feature" role="listitem">
-            <div class="va-feature-icon-wrap">
-              <img src="assets/img/icon-comp-video.svg" alt="" width="24" height="24" />
-            </div>
-            <div class="va-feature-text">
-              <p class="va-feature-title">Mayor accesibilidad</p>
-              <p class="va-feature-body">Consulta desde cualquier lugar sin desplazarte</p>
+          <div class="va-feature-row" data-barcolor="#0085ca" data-iconbg="rgba(0,133,202,0.12)">
+            <div class="va-progress-track"><div class="va-progress-bar"></div></div>
+            <div class="va-feature va-feature-item">
+              <div class="va-feature-icon-wrap">
+                <img src="assets/img/icon-comp-video.svg" alt="" width="24" height="24" />
+              </div>
+              <div class="va-feature-text">
+                <p class="va-feature-title">Mayor accesibilidad</p>
+                <p class="va-feature-body">Consulta desde cualquier lugar sin desplazarte</p>
+              </div>
             </div>
           </div>
 
-          <div class="va-feature" role="listitem">
-            <div class="va-feature-icon-wrap">
-              <img src="assets/img/icon-clock-heart.svg" alt="" width="24" height="24" />
-            </div>
-            <div class="va-feature-text">
-              <p class="va-feature-title">Ahorro de tiempo</p>
-              <p class="va-feature-body">Atención más eficiente. sin filas de espera</p>
-            </div>
-          </div>
-
-          <div class="va-feature" role="listitem">
-            <div class="va-feature-icon-wrap">
-              <img src="assets/img/icon-cal-fav.svg" alt="" width="24" height="24" />
-            </div>
-            <div class="va-feature-text">
-              <p class="va-feature-title">Agenda flexible</p>
-              <p class="va-feature-body">Agenda tus citas en el momento que más te acomode</p>
+          <div class="va-feature-row" data-barcolor="#7e4ed7" data-iconbg="rgba(126,78,215,0.12)">
+            <div class="va-progress-track"><div class="va-progress-bar"></div></div>
+            <div class="va-feature va-feature-item">
+              <div class="va-feature-icon-wrap">
+                <img src="assets/img/icon-clock-heart.svg" alt="" width="24" height="24" />
+              </div>
+              <div class="va-feature-text">
+                <p class="va-feature-title">Ahorro de tiempo</p>
+                <p class="va-feature-body">Atención más eficiente, sin filas de espera</p>
+              </div>
             </div>
           </div>
 
-          <div class="va-feature" role="listitem">
-            <div class="va-feature-icon-wrap">
-              <img src="assets/img/icon-security.svg" alt="" width="24" height="24" />
+          <div class="va-feature-row" data-barcolor="#ef9033" data-iconbg="rgba(239,144,51,0.12)">
+            <div class="va-progress-track"><div class="va-progress-bar"></div></div>
+            <div class="va-feature va-feature-item">
+              <div class="va-feature-icon-wrap">
+                <img src="assets/img/icon-cal-fav.svg" alt="" width="24" height="24" />
+              </div>
+              <div class="va-feature-text">
+                <p class="va-feature-title">Agenda flexible</p>
+                <p class="va-feature-body">Agenda tus citas en el momento que más te acomode</p>
+              </div>
             </div>
-            <div class="va-feature-text">
-              <p class="va-feature-title">Rápido y seguro</p>
-              <p class="va-feature-body">Plataforma confiable para tu atención</p>
+          </div>
+
+          <div class="va-feature-row" data-barcolor="#25a337" data-iconbg="rgba(37,163,55,0.12)">
+            <div class="va-progress-track"><div class="va-progress-bar"></div></div>
+            <div class="va-feature va-feature-item">
+              <div class="va-feature-icon-wrap">
+                <img src="assets/img/icon-security.svg" alt="" width="24" height="24" />
+              </div>
+              <div class="va-feature-text">
+                <p class="va-feature-title">Rápido y seguro</p>
+                <p class="va-feature-body">Plataforma confiable para tu atención</p>
+              </div>
             </div>
           </div>
 
@@ -258,9 +270,16 @@
         </h2>
       </div>
 
-      <!-- Photo card -->
-      <div class="va-photo-card">
-        <div class="va-photo-card-overlay" aria-hidden="true"></div>
+      <!-- Photo card con zoom-in hover -->
+      <div class="va-photo-card va-bg-zoom-wrap">
+        <img
+          src="assets/img/video-reserva-bg.jpg"
+          alt=""
+          aria-hidden="true"
+          class="va-bg-photo"
+        />
+        <div class="va-photo-card-gradient" aria-hidden="true"></div>
+        <div class="va-bg-zoom-overlay" aria-hidden="true"></div>
         <img
           src="assets/img/elem-d2.png"
           alt=""
@@ -450,6 +469,61 @@
 
     </div><!-- /container -->
   </footer>
+
+  <script>
+  /* ── Feature highlight loop ── */
+  (function () {
+    var INTERVAL = 2500
+    var activeIndex = 0
+    var isPaused = false
+    var timer = null
+
+    function activate(index) {
+      var rows = document.querySelectorAll('#va-features-list .va-feature-row')
+      rows.forEach(function (row, i) {
+        var item = row.querySelector('.va-feature-item')
+        var bar  = row.querySelector('.va-progress-bar')
+        var icon = row.querySelector('.va-feature-icon-wrap')
+        if (i === index) {
+          item.classList.add('is-active')
+          item.classList.remove('is-dim')
+          icon.style.background = row.dataset.iconbg
+          bar.style.background  = row.dataset.barcolor
+          bar.classList.remove('va-bar-running')
+          void bar.offsetWidth          // fuerza reflow para reiniciar la animación
+          bar.classList.add('va-bar-running')
+        } else {
+          item.classList.remove('is-active')
+          item.classList.add('is-dim')
+          icon.style.background = ''    // vuelve al color CSS por defecto
+          bar.classList.remove('va-bar-running')
+        }
+      })
+      activeIndex = index
+    }
+
+    function startTimer() {
+      timer = setInterval(function () {
+        if (!isPaused) {
+          activate((activeIndex + 1) % 4)
+        }
+      }, INTERVAL)
+    }
+
+    var list = document.getElementById('va-features-list')
+    if (list) {
+      list.addEventListener('mouseleave', function () { isPaused = false })
+      list.querySelectorAll('.va-feature-item').forEach(function (item, i) {
+        item.addEventListener('mouseenter', function () {
+          isPaused = true
+          activate(i)
+        })
+      })
+      activate(0)
+      startTimer()
+    }
+  })()
+  </script>
 
 </body>
 </html>
