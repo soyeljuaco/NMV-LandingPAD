@@ -503,6 +503,16 @@
   margin: 0;
 }
 
+/* Step cards — sombra sutil + hover border */
+.va-step-card {
+  box-shadow:
+    rgba(71, 103, 136, 0.04) 0px 4px 5px 0px,
+    rgba(71, 103, 136, 0.03) 0px 8px 15px 0px,
+    rgba(71, 103, 136, 0.06) 0px 15px 30px 0px;
+  transition: border-color 0.22s ease;
+}
+.va-step-card:hover { border-color: #b3cde0; }
+
 /* Reserva CTA row */
 .va-reserva-cta {
   display: flex;

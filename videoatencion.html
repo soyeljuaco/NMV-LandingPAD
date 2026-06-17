@@ -495,7 +495,7 @@
         } else {
           item.classList.remove('is-active')
           item.classList.add('is-dim')
-          icon.style.background = ''    // vuelve al color CSS por defecto
+          // El color del ícono se mantiene — solo cambia la opacidad vía CSS
           bar.classList.remove('va-bar-running')
         }
       })
@@ -512,6 +512,11 @@
 
     var list = document.getElementById('va-features-list')
     if (list) {
+      // Inicializar: fijar el color de icono de cada feature (nunca se borra)
+      list.querySelectorAll('.va-feature-row').forEach(function (row) {
+        row.querySelector('.va-feature-icon-wrap').style.background = row.dataset.iconbg
+      })
+
       list.addEventListener('mouseleave', function () { isPaused = false })
       list.querySelectorAll('.va-feature-item').forEach(function (item, i) {
         item.addEventListener('mouseenter', function () {
