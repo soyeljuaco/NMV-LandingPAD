@@ -1,0 +1,708 @@
+/* ============================================================
+   VIDEOATENCIÓN — Page-specific styles
+   Reuses tokens.css + styles.css (header/footer shared)
+   ============================================================ */
+
+/* ── Utility: white icon filter (img inside blue button) ── */
+.va-btn-icon-white {
+  filter: brightness(0) invert(1);
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.va-hero {
+  position: relative;
+  width: 100%;
+  padding: var(--section-py-lg) 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+/* Full-bleed background photo */
+.va-hero-bg-img {
+  position: absolute;
+  top: -0.01%;
+  left: 33.32%;
+  width: 69.81%;
+  height: 118.39%;
+  object-fit: cover;
+  pointer-events: none;
+  z-index: 0;
+  max-width: none;
+}
+
+/* White-to-transparent gradient over the photo */
+.va-hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(82.17deg, #ffffff 38.16%, rgba(255, 255, 255, 0) 54.17%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.va-hero-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Left column: 681px matches Figma */
+.va-hero-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 681px;
+}
+
+/* ── Badge ── */
+.va-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.va-badge-text {
+  font-family: var(--font-inter);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.6px;
+  color: #723585;
+}
+
+/* ── Hero heading ── */
+.va-hero-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.va-hero-heading {
+  font-family: var(--font-raleway);
+  font-size: 72px;
+  line-height: 76px;
+  color: var(--texto-textprimary);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.va-hero-h1-medium {
+  font-weight: 500;
+}
+
+.va-hero-h1-bold {
+  font-weight: 700;
+}
+
+.va-hero-body {
+  font-family: var(--font-inter);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 34px;
+  color: var(--texto-textbody);
+  margin: 0;
+}
+
+/* ── Primary CTA button (blue) ── */
+.va-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--marca-principal-primary);
+  color: #ffffff;
+  font-family: var(--font-inter);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: -0.44px;
+  text-decoration: none;
+  padding: 14px 48px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  flex-shrink: 0;
+  align-self: flex-start;
+  transition: opacity 0.15s;
+}
+
+.va-btn-primary:hover { opacity: 0.9; }
+
+/* ── Floating confirmation card ── */
+.va-confirm-card {
+  position: absolute;
+  background: #ffffff;
+  filter: drop-shadow(0px 16px 8px rgba(0, 0, 0, 0.25));
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  /* Position: ~104px right of center at 1440px reference (824px - 1440/2) */
+  left: calc(50% + 104px);
+  top: 401px;
+  z-index: 3;
+}
+
+.va-confirm-icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--estado-greensoft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.va-confirm-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.va-confirm-title {
+  font-family: var(--font-inter);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  color: var(--texto-textprimary);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.va-confirm-time {
+  font-family: var(--font-inter);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 16.5px;
+  color: var(--texto-textbody);
+  margin: 0;
+  white-space: nowrap;
+}
+
+
+/* ============================================================
+   BENEFITS
+   ============================================================ */
+.va-benefits {
+  background: var(--superficies-white);
+  width: 100%;
+  padding: var(--section-py-lg) 0;
+  overflow: hidden;
+}
+
+.va-benefits-inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+/* Left: heading block */
+.va-benefits-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+  min-width: 0;
+}
+
+.va-elem-b1 {
+  width: 105px;
+  height: 22px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.va-benefits-heading {
+  font-family: var(--font-raleway);
+  font-size: 48px;
+  line-height: normal;
+  color: var(--texto-textprimary);
+  margin: 0;
+}
+
+.va-bh-regular { font-weight: 600; }
+.va-bh-bold    { font-weight: 700; }
+
+/* Right: features */
+.va-benefits-right {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.va-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.va-feature-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(113, 52, 116, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.va-feature-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.va-feature-title {
+  font-family: var(--font-inter);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: -0.44px;
+  color: var(--texto-textprimary);
+  margin: 0;
+}
+
+.va-feature-body {
+  font-family: var(--font-inter);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  color: var(--texto-textbody);
+  margin: 0;
+}
+
+
+/* ============================================================
+   RESERVA RÁPIDA
+   ============================================================ */
+.va-reserva {
+  position: relative;
+  width: 100%;
+  padding-top: var(--section-py-md);
+  padding-bottom: var(--section-py-lg);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.va-reserva-container {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: stretch;
+  width: 100%;
+}
+
+/* Heading group (centered) */
+.va-reserva-heading-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.va-eyebrow {
+  font-family: var(--font-inter);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.6px;
+  color: #723585;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.va-reserva-heading {
+  font-family: var(--font-raleway);
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 50px;
+  color: var(--texto-textprimary);
+  margin: 0;
+}
+
+.va-reserva-heading strong {
+  font-weight: 700;
+}
+
+/* Photo card */
+.va-photo-card {
+  position: relative;
+  width: 100%;
+  height: 448px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-image: url('../img/video-reserva-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.va-photo-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    85.52deg,
+    rgba(33, 37, 41, 0.3) 11.25%,
+    rgba(255, 255, 255, 0) 84.53%
+  );
+  border-radius: var(--radius-lg);
+}
+
+.va-elem-d2 {
+  position: absolute;
+  left: 55px;
+  top: 323px;
+  width: 72px;
+  height: 77px;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* Step cards row */
+.va-steps {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.va-step-card {
+  flex: 1;
+  min-width: 0;
+  background: var(--superficies-white);
+  border: 1px solid var(--bordes-borderdefault);
+  border-radius: var(--radius-lg);
+  padding: 24px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.va-step-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.va-step-title {
+  font-family: var(--font-raleway);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  color: var(--marca-principal-primary);
+  margin: 0;
+}
+
+.va-step-body {
+  font-family: var(--font-inter);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--texto-textbody);
+  margin: 0;
+}
+
+/* Reserva CTA row */
+.va-reserva-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Floating branch exec card */
+.va-branch-card {
+  position: absolute;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  width: 205px;
+  /* 690px from section-left at 1440px → calc(50% - 30px) */
+  left: calc(50% - 30px);
+  top: 452px;
+  z-index: 3;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.va-branch-icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 145, 206, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.va-branch-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.va-branch-title {
+  font-family: var(--font-inter);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  color: var(--texto-textprimary);
+  margin: 0;
+}
+
+.va-branch-sub {
+  font-family: var(--font-inter);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 16.5px;
+  color: var(--texto-textbody);
+  margin: 0;
+}
+
+
+/* ============================================================
+   BLUE CTA SECTION
+   ============================================================ */
+.va-cta-blue {
+  background: var(--marca-principal-primary);
+  width: 100%;
+  min-height: 416px;
+  display: flex;
+  align-items: center;
+  padding: var(--section-py-lg) 0;
+  overflow: hidden;
+}
+
+.va-cta-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+/* Left column: 690px */
+.va-cta-left {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 690px;
+  flex-shrink: 0;
+}
+
+.va-cta-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.va-cta-heading {
+  font-family: var(--font-raleway);
+  font-size: 36px;
+  line-height: 52px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.va-cta-h2-medium { font-weight: 500; }
+.va-cta-h2-bold   { font-weight: 700; }
+
+.va-cta-body {
+  font-family: var(--font-inter);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 34px;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* White button (blue section) */
+.va-btn-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  color: var(--marca-principal-primary);
+  font-family: var(--font-inter);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: -0.44px;
+  text-decoration: none;
+  padding: 14px 48px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  flex-shrink: 0;
+  align-self: flex-start;
+  transition: opacity 0.15s;
+}
+
+.va-btn-white:hover { opacity: 0.9; }
+
+/* Right column: schedule cards */
+.va-cta-right {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  gap: 32px;
+  align-self: stretch;
+}
+
+/* Glass schedule card */
+.va-schedule-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  width: 100%;
+}
+
+.va-schedule-days {
+  font-family: var(--font-inter);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin: 0;
+}
+
+.va-schedule-hours {
+  font-family: var(--font-inter);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40px;
+  color: #ffffff;
+  margin: 0;
+}
+
+
+/* ============================================================
+   FOOTER (videoatención variant)
+   ============================================================ */
+.va-footer {
+  background: var(--superficies-white);
+}
+
+.va-footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 24px;
+  row-gap: 32px;
+  padding-top: 32px;
+  padding-bottom: 48px;
+  overflow: hidden;
+  border-top: 1px solid var(--bordes-borderdefault);
+}
+
+.va-footer-col-title {
+  font-family: var(--font-inter);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--texto-textprimary);
+  margin: 0 0 24px 0;
+}
+
+.va-footer-links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.va-footer-link {
+  font-family: var(--font-inter);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--texto-textbody);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.va-footer-link:hover { color: var(--marca-principal-primary); }
+
+/* Contact list (col 4) */
+.va-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.va-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.va-contact-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.va-contact-icon--green  { background: rgba(37, 163, 55, 0.1); }
+.va-contact-icon--gray   { background: rgba(124, 132, 154, 0.1); }
+.va-contact-icon--orange { background: rgba(239, 144, 51, 0.1); }
+.va-contact-icon--blue   { background: rgba(0, 133, 202, 0.1); }
+
+.va-contact-text {
+  font-family: var(--font-inter);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--texto-textbody);
+}
+
+/* Footer bottom bar */
+.va-footer-bottom {
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 48px;
+  padding-bottom: 32px;
+}
+
+.va-footer-logo {
+  width: 173px;
+  height: 49px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.va-footer-copy {
+  font-family: var(--font-inter);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--texto-textsubtle);
+  margin: 0;
+  white-space: nowrap;
+}
