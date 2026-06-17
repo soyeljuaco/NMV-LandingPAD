@@ -459,6 +459,27 @@
   z-index: 3;
 }
 
+/* Branch card PNG — dentro de la photo card */
+.va-branch-card-img {
+  position: absolute;
+  left: 48%;
+  top: 65%;
+  width: 237px;
+  height: auto;
+  pointer-events: none;
+  z-index: 4;
+  animation: va-branch-bounce 3.2s ease-in-out infinite;
+}
+
+@keyframes va-branch-bounce {
+  0%, 100% { transform: translateX(0px); }
+  50%       { transform: translateX(6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .va-branch-card-img { animation: none; }
+}
+
 /* Step cards row */
 .va-steps {
   display: flex;
@@ -520,59 +541,6 @@
   justify-content: center;
 }
 
-/* Floating branch exec card */
-.va-branch-card {
-  position: absolute;
-  background: #ffffff;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 16px;
-  border-radius: var(--radius-lg);
-  width: 205px;
-  /* 690px from section-left at 1440px → calc(50% - 30px) */
-  left: calc(50% - 30px);
-  top: 452px;
-  z-index: 3;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-}
-
-.va-branch-icon-wrap {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(0, 145, 206, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.va-branch-details {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  flex: 1;
-  min-width: 0;
-}
-
-.va-branch-title {
-  font-family: var(--font-inter);
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 16px;
-  color: var(--texto-textprimary);
-  margin: 0;
-}
-
-.va-branch-sub {
-  font-family: var(--font-inter);
-  font-size: 11px;
-  font-weight: 400;
-  line-height: 16.5px;
-  color: var(--texto-textbody);
-  margin: 0;
-}
 
 
 /* ============================================================
